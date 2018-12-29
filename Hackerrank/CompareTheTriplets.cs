@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compare_the_Triplets {
+namespace CompareTheTriplets {
     class Program {
 		static void Main(string[] args) {
 		    List<int> alice = new List<int>(new int []{5,6,7});
