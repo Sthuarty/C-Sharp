@@ -1,37 +1,50 @@
-﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace CompareTheTriplets {
-    class Program {
-		static void Main(string[] args) {
-		    List<int> alice = new List<int>(new int []{5,6,7});
-		    List<int> bob = new List<int>(new int []{3,6,10});
-		    
-		    
-			Console.WriteLine(String.Join(" ", compareTriplets(alice, bob)));
-		}
-        static List<int> compareTriplets(List<int> a, List<int> b) {
-            int totalA = 0;
-            int totalB = 0;
-            List<int> total = new List<int>();
-    
-            
-    
-            for (int i = 0; i < a.Count; i++) {
-                if (a[i] > b[i])
-                    totalA++;
-                if (b[i] > a[i])
-                    totalB++;
-            }
-            
-            total.Add(totalA);
-            total.Add(totalB);
+class Solution {
 
-            return total;
-    
+    // Complete the compareTriplets function below.
+    static List<int> compareTriplets(List<int> a, List<int> b) {
+        int totalA = 0;
+        int totalB = 0;
+        List<int> total = new List<int>();
+
+        for (int i = 0; i < a.Count; i++) {
+            if (a[i] > b[i])
+                totalA++;
+            if (b[i] > a[i])
+                totalB++;
         }
+        
+        total.Add(totalA);
+        total.Add(totalB);
+
+        return total;
+    }
+
+    static void Main(string[] args) {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        List<int> a = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(aTemp => Convert.ToInt32(aTemp)).ToList();
+
+        List<int> b = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(bTemp => Convert.ToInt32(bTemp)).ToList();
+
+        List<int> result = compareTriplets(a, b);
+
+        textWriter.WriteLine(String.Join(" ", result));
+
+        textWriter.Flush();
+        textWriter.Close();
     }
 }
