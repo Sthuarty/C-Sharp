@@ -24,11 +24,8 @@ class Solution {
         int jumps = 0;
             
             for(int i = 0; i < c.Length - 1; i++){
-                //Console.Write(c[i]);
-                //int twoSteps = 0;
                 
                 if (i < c.Length - 2) {
-                    // twoSteps = i + 2;
                     if (c[i + 2] == 0) {
                         //Console.Write("  index= " + i + "pode pular 2" + Environment.NewLine);
                         jumps++;
